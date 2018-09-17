@@ -8,8 +8,11 @@ import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.noober.background.utils.TypeValueHelper;
+
+import java.util.ArrayList;
 
 
 public class BackgroundFactory implements LayoutInflater.Factory2 {
@@ -20,6 +23,13 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             "android.webkit.",
             "android.app."
     };
+
+    private static final ArrayList<IBGProcesser> PROCESSERS = new ArrayList<>(8);
+
+    static {
+        PROCESSERS.add(new TXColor());
+
+    }
 
     //AppCompatActivity用的来创建view
     private LayoutInflater.Factory mViewCreateFactory;
@@ -54,6 +64,16 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             return null;
         }
 
+
+        //text颜色处理
+        if (view instanceof TextView) {
+            TypedArray textColor = context.obtainStyledAttributes(attrs, R.styleable.mc_text_sl_color);
+            if (textColor.getIndexCount() > 0) {
+                ((TextView) view).setTextColor(TXColor.create(textColor));
+            }
+            textColor.recycle();
+        }
+
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
         TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.bg_selector);
 
@@ -78,6 +98,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 //            } else {
 //                view.setBackgroundDrawable(drawable);
 //            }
+
             return view;
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,7 +127,9 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     }
 
 
-
+    interface IBGProcesser {
+        boolean process(View view, Context context, AttributeSet attrs);
+    }
 
 
 }

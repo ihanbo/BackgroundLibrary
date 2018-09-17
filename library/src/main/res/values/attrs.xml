@@ -36,6 +36,24 @@
     <!--android:dashGap="integer" />-->
     <!--</shape>-->
 
+
+    <!--背景selector 优先级高-->
+    <declare-styleable name="mc_bg_sl">
+        <attr name="bg_normal" format="color|reference" />
+        <attr name="bg_pressed" format="color|reference" />
+        <attr name="bg_checked" format="color|reference" />
+        <attr name="bg_selected" format="color|reference" />
+    </declare-styleable>
+
+    <!--文字颜色-->
+    <declare-styleable name="mc_text_sl_color">
+        <attr name="tx_color" format="color" />
+        <attr name="tx_color_focused" format="color" />
+        <attr name="tx_color_pressed" format="color" />
+        <attr name="tx_color_checked" format="color" />
+        <attr name="tx_color_selected" format="color" />
+    </declare-styleable>
+
     <declare-styleable name="background">
 
         <!--shape-->
@@ -46,16 +64,17 @@
             <enum name="ring" value="3" />
         </attr>
 
+        <!--颜色，优先级高于渐变色-->
         <attr name="bg_solid_color" format="color" />
 
-        <!--矩形的角-->
+        <!--矩形的角 bg_corners_radius优先级低于上下左右设置的-->
         <attr name="bg_corners_radius" format="dimension" />
         <attr name="bg_corners_bl_radius" format="dimension" />
         <attr name="bg_corners_br_radius" format="dimension" />
         <attr name="bg_corners_tl_radius" format="dimension" />
         <attr name="bg_corners_tr_radius" format="dimension" />
 
-        <!--渐变 渐变-光晕-镭射-->
+        <!--渐变 渐变-光晕-镭射(扫描线)-->
         <attr name="bg_gradient_type" format="enum">
             <enum name="linear" value="0" />
             <enum name="radial" value="1" />
@@ -64,6 +83,7 @@
 
         <attr name="gradient_useLevel" format="boolean" />
 
+        <!--线性渐变角度，45的倍数-->
         <attr name="bg_gradient_angle" format="integer" />
 
         <attr name="bg_gradient_centerX" format="float" />
@@ -73,6 +93,7 @@
         <attr name="bg_gradient_centerColor" format="color" />
         <attr name="bg_gradient_endColor" format="color" />
 
+        <!--类型为radial时适用，渐变半径-->
         <attr name="bg_gradient_gradient_radius" format="dimension" />
 
 
@@ -85,6 +106,7 @@
             <enum name="wrap_content" value="-2" />
             <enum name="match_parent" value="-1" />
         </attr>
+
         <attr name="size_height" format="dimension">
             <enum name="wrap_content" value="-2" />
             <enum name="match_parent" value="-1" />
@@ -113,7 +135,6 @@
         <attr name="ripple_enable" format="boolean" />
         <attr name="ripple_color" format="color" />
     </declare-styleable>
-
 
 
 </resources>

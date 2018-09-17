@@ -24,12 +24,6 @@ public class BackgroundLibrary {
         inject(inflater, fragment.getContext());
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public static void inject(Fragment fragment) {
-        LayoutInflater inflater = fragment.getLayoutInflater();
-        inject(inflater, fragment.getContext());
-    }
-
     public static void inject(Context context) {
         LayoutInflater inflater;
         if (context instanceof Activity) {

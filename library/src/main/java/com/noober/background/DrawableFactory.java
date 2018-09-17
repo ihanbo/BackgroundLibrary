@@ -1,6 +1,9 @@
 package com.noober.background;
 
+import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
@@ -30,7 +33,7 @@ public class DrawableFactory {
     private static Drawable getStateListDrawable(int sltype, Drawable d1, GradientDrawable d2) {
         StateListDrawable stateListDrawable = new StateListDrawable();
         if ((sltype & CKECKED) !=0) {
-
+            stateListDrawable.addState(new int[]{android.R.attr.state_drag_can_accept}, d2);
         }
 
         if ((sltype & PRESSED) !=0) {
@@ -64,4 +67,26 @@ public class DrawableFactory {
         }
         return stateListDrawable;
     }
+
+
+    public StateListDrawable cc() {
+        StateListDrawable sd = new StateListDrawable();
+        sd.addState(new int[]{com.android.internal.R.attr.state_pressed}, new ColorDrawable(Color.BLUE));
+        sd.addState(new int[]{com.android.internal.R.attr.state_focused}, new ColorDrawable(Color.RED));
+        sd.addState(new int[0], new ColorDrawable(Color.YELLOW));
+        return sd;
+    }
+    public ColorStateList bb() {
+        int[][] stateSpecList = new int[2][2];
+        stateSpecList[0][0] = com.android.internal.R.attr.state_pressed;
+        stateSpecList[0][1] = com.android.internal.R.attr.state_selected;
+        stateSpecList[1] = new int[0];
+        int[] color = new int[2];
+        color[0] = Color.GREEN;
+        color[1] = Color.RED;
+        ColorStateList colorStateList2 = new ColorStateList(stateSpecList, color);
+        return colorStateList2;
+    }
+
+
 }

@@ -38,7 +38,11 @@ public class TypeValueHelper {
         sAppearanceValues.put(R.styleable.background_ripple_enable, R.styleable.background_ripple_enable);
         sAppearanceValues.put(R.styleable.background_ripple_color, R.styleable.background_ripple_color);
 
-        sAppearancePressValues.put(R.styleable.bg_selector_sl_pressed, R.styleable.bg_selector_sl_pressed);
-        sAppearancePressValues.put(R.styleable.bg_selector_sl_unpressed, R.styleable.bg_selector_sl_unpressed);
+
+    }
+
+
+    static void put(int style){
+        sAppearanceValues.put(style, style);
     }
 }
