@@ -247,16 +247,16 @@ class BGShape extends BackgroundFactory.IBGProcesser {
             int attr = typedArray.getIndex(i);
             if (attr == R.styleable.mc_bg_shape_other_bgs_corners_radius) {         //优先级低于array
                 drawable.setCornerRadius(typedArray.getDimension(attr, 0));
-            } else if (attr == R.styleable.mc_bg_shape_other_bgs_corners_bl_radius) {
+            } else if (attr == R.styleable.mc_bg_shape_other_bgs_corners_radius_lb) {
                 cornerRadius[6] = typedArray.getDimension(attr, 0);
                 cornerRadius[7] = typedArray.getDimension(attr, 0);
-            } else if (attr == R.styleable.mc_bg_shape_other_bgs_corners_br_radius) {
+            } else if (attr == R.styleable.mc_bg_shape_other_bgs_corners_radius_rb) {
                 cornerRadius[4] = typedArray.getDimension(attr, 0);
                 cornerRadius[5] = typedArray.getDimension(attr, 0);
-            } else if (attr == R.styleable.mc_bg_shape_other_bgs_corners_tl_radius) {
+            } else if (attr == R.styleable.mc_bg_shape_other_bgs_corners_radius_lt) {
                 cornerRadius[0] = typedArray.getDimension(attr, 0);
                 cornerRadius[1] = typedArray.getDimension(attr, 0);
-            } else if (attr == R.styleable.mc_bg_shape_other_bgs_corners_tr_radius) {
+            } else if (attr == R.styleable.mc_bg_shape_other_bgs_corners_radius_rt) {
                 cornerRadius[2] = typedArray.getDimension(attr, 0);
                 cornerRadius[3] = typedArray.getDimension(attr, 0);
             } else if (attr == R.styleable.mc_bg_shape_other_bgs_gradient_useLevel) {

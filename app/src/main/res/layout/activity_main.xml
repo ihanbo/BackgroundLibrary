@@ -12,28 +12,61 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
         android:text="直接添加自定义属性，设置背景shape："
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        app:bg_checked="@color/colorAccent"
+        app:bg_normal="#00ff00"
+        app:bg_pressed="@drawable/ic_launcher_foreground" />
 
     <TextView
         android:layout_width="130dp"
         android:layout_height="36dp"
         android:gravity="center"
         android:text="TextView"
+        android:clickable="true"
+
+        app:bgs_solid_color_pressed="#000000"
+        app:bgs_stroke_color_pressed="#000000"
+        app:bgs_gradient_startColor_pressed="@color/colorPrimary"
+        app:bgs_gradient_centerColor_pressed="#000000"
+        app:bgs_gradient_endColor_pressed="#000000"
+
+
+        app:bgs_solid_color_cs="#000000"
+        app:bgs_stroke_color_cs="#000000"
+        app:bgs_gradient_startColor_cs="@color/colorPrimary"
+        app:bgs_gradient_centerColor_cs="#000000"
+        app:bgs_gradient_endColor_cs="#000000"
+
+
+
+
         android:textColor="#8c6822"
         android:textSize="20sp"
         app:bgs_corners_radius="4dp"
+        app:bgs_corners_radius_lb="15dp"
+        app:bgs_corners_radius_lt="5dp"
+        app:bgs_corners_radius_rb="15dp"
+        app:bgs_corners_radius_rt="5dp"
+        app:bgs_gradient_centerColor="#00ff00"
+        app:bgs_gradient_endColor="@color/colorPrimaryDark"
+        app:bgs_gradient_startColor="@color/colorAccent"
+        app:bgs_gradient_type="linear"
+        app:bgs_shape="rectangle"
         app:bgs_solid_color="#E3B666"
         app:bgs_stroke_color="#8c6822"
+        app:bgs_stroke_dashGap="4dp"
+        app:bgs_stroke_dashWidth="4dp"
         app:bgs_stroke_width="2dp" />
 
     <Button
         android:layout_width="130dp"
         android:layout_height="36dp"
         android:layout_marginTop="5dp"
+        android:clickable="true"
         android:gravity="center"
         android:padding="0dp"
-        android:clickable="true"
         android:text="Button"
         android:textColor="#4F94CD"
         android:textSize="20sp"
@@ -44,7 +77,7 @@
         app:bgs_shape="rectangle"
         app:bgs_solid_color_pressed="#00FF00"
         app:tx_color="#0000ff"
-        app:tx_color_pressed="#ff0000" />
+        app:tx_color_pressed="@color/red" />
 
     <Button
         android:layout_width="300dp"

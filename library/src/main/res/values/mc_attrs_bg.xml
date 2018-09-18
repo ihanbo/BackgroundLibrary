@@ -35,6 +35,7 @@
     <!--android:dashWidth="integer"-->
     <!--android:dashGap="integer" />-->
     <!--</shape>-->
+    <color name="red" >#ff0000</color>
 
 
     <!--背景selector 优先级高-->
@@ -95,10 +96,10 @@
 
         <!--矩形的角 bg_corners_radius优先级低于上下左右设置的-->
         <attr name="bgs_corners_radius" format="dimension" />
-        <attr name="bgs_corners_bl_radius" format="dimension" />
-        <attr name="bgs_corners_br_radius" format="dimension" />
-        <attr name="bgs_corners_tl_radius" format="dimension" />
-        <attr name="bgs_corners_tr_radius" format="dimension" />
+        <attr name="bgs_corners_radius_lb" format="dimension" />
+        <attr name="bgs_corners_radius_rb" format="dimension" />
+        <attr name="bgs_corners_radius_lt" format="dimension" />
+        <attr name="bgs_corners_radius_rt" format="dimension" />
 
         <!--渐变 渐变-光晕-镭射(扫描线)-->
         <attr name="bgs_gradient_type" format="enum">
