@@ -2,11 +2,9 @@ package com.noober.background;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -23,7 +21,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     private static final ArrayList<IBGProcesser> PROCESSERS = new ArrayList<>(8);
 
     static {
-        PROCESSERS.add(new TXColor());
+        PROCESSERS.add(new TXColorProcesser());
         PROCESSERS.add(new BGProcesser());
     }
 
