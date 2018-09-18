@@ -3,14 +3,10 @@ package com.noober.background;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-
-import com.noober.background.utils.TypeValueHelper;
 
 import java.util.ArrayList;
 
@@ -28,7 +24,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
 
     static {
         PROCESSERS.add(new TXColor());
-
+        PROCESSERS.add(new BGProcesser());
     }
 
     //AppCompatActivity用的来创建view
@@ -64,47 +60,8 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
             return null;
         }
 
-
-        //text颜色处理
-        if (view instanceof TextView) {
-            TypedArray textColor = context.obtainStyledAttributes(attrs, R.styleable.mc_text_sl_color);
-            if (textColor.getIndexCount() > 0) {
-                ((TextView) view).setTextColor(TXColor.create(textColor));
-            }
-            textColor.recycle();
-        }
-
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.background);
-        TypedArray pressTa = context.obtainStyledAttributes(attrs, R.styleable.bg_selector);
-
-        try {
-
-            int attrCount = typedArray.getIndexCount();
-            if (attrCount == 0) {
-                return view;
-            }
-
-            Drawable drawable = DrawableFactory.create(typedArray);
-
-            if (drawable != null) {
-                view.setBackgroundDrawable(drawable);
-            }
-
-
-//            if (pressTa.getIndexCount() > 0) {
-//                StateListDrawable stateListDrawable = getStateListDrawable(drawable, getDrawable(typedArray), pressTa);
-//                view.setClickable(true);
-//                view.setBackgroundDrawable(stateListDrawable);
-//            } else {
-//                view.setBackgroundDrawable(drawable);
-//            }
-
-            return view;
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            typedArray.recycle();
-            pressTa.recycle();
+        for (int i = 0, size = PROCESSERS.size(); i < size; i++) {
+            PROCESSERS.get(i).process(view, context, attrs);
         }
 
         return view;
@@ -127,9 +84,21 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     }
 
 
-    interface IBGProcesser {
-        boolean process(View view, Context context, AttributeSet attrs);
+    public static abstract class  IBGProcesser {
+        abstract boolean process(View view, Context context, AttributeSet attrs);
+        public void safeRecycle(TypedArray a) {
+            if (a == null) {
+                return;
+            }
+            try {
+                a.recycle();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+
 
 
 }

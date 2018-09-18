@@ -34,7 +34,7 @@ public class BackgroundLibrary {
         inject(inflater, context);
     }
 
-    public static void inject(LayoutInflater inflater, Context context) {
+    private static void inject(LayoutInflater inflater, Context context) {
         BackgroundFactory factory = new BackgroundFactory(inflater);
         if (context instanceof AppCompatActivity) {
             factory.setInterceptFactory(new CompatFactory((AppCompatActivity) context));
@@ -43,7 +43,7 @@ public class BackgroundLibrary {
     }
 
 
-    static class CompatFactory implements LayoutInflater.Factory2 {
+    private static class CompatFactory implements LayoutInflater.Factory2 {
         private AppCompatDelegate delegate;
 
         public CompatFactory(AppCompatActivity compatActivity) {

@@ -54,86 +54,91 @@
         <attr name="tx_color_selected" format="color" />
     </declare-styleable>
 
-    <declare-styleable name="background">
+
+    <!--shape背景-->
+    <declare-styleable name="mc_bg_shape">
+        <attr name="bgs_solid_color" format="color" />
+        <attr name="bgs_stroke_color" format="color" />
+        <attr name="bgs_gradient_startColor" format="color" />
+        <attr name="bgs_gradient_centerColor" format="color" />
+        <attr name="bgs_gradient_endColor" format="color" />
+    </declare-styleable>
+
+    <!--shape背景点击的-->
+    <declare-styleable name="mc_bg_shape_pressed">
+        <attr name="bgs_solid_color_pressed" format="color" />
+        <attr name="bgs_stroke_color_pressed" format="color" />
+        <attr name="bgs_gradient_startColor_pressed" format="color" />
+        <attr name="bgs_gradient_centerColor_pressed" format="color" />
+        <attr name="bgs_gradient_endColor_pressed" format="color" />
+    </declare-styleable>
+
+    <!--shape背景点checked或者selected，用了一套-->
+    <declare-styleable name="mc_bg_shape_selected_or_checked">
+        <attr name="bgs_solid_color_cs" format="color" />
+        <attr name="bgs_stroke_color_cs" format="color" />
+        <attr name="bgs_gradient_startColor_cs" format="color" />
+        <attr name="bgs_gradient_centerColor_cs" format="color" />
+        <attr name="bgs_gradient_endColor_cs" format="color" />
+    </declare-styleable>
+
+
+    <declare-styleable name="mc_bg_shape_other">
 
         <!--shape-->
-        <attr name="bg_shape" format="enum">
+        <attr name="bgs_shape" format="enum">
             <enum name="rectangle" value="0" />
             <enum name="oval" value="1" />
             <enum name="line" value="2" />
             <enum name="ring" value="3" />
         </attr>
 
-        <!--颜色，优先级高于渐变色-->
-        <attr name="bg_solid_color" format="color" />
-
         <!--矩形的角 bg_corners_radius优先级低于上下左右设置的-->
-        <attr name="bg_corners_radius" format="dimension" />
-        <attr name="bg_corners_bl_radius" format="dimension" />
-        <attr name="bg_corners_br_radius" format="dimension" />
-        <attr name="bg_corners_tl_radius" format="dimension" />
-        <attr name="bg_corners_tr_radius" format="dimension" />
+        <attr name="bgs_corners_radius" format="dimension" />
+        <attr name="bgs_corners_bl_radius" format="dimension" />
+        <attr name="bgs_corners_br_radius" format="dimension" />
+        <attr name="bgs_corners_tl_radius" format="dimension" />
+        <attr name="bgs_corners_tr_radius" format="dimension" />
 
         <!--渐变 渐变-光晕-镭射(扫描线)-->
-        <attr name="bg_gradient_type" format="enum">
+        <attr name="bgs_gradient_type" format="enum">
             <enum name="linear" value="0" />
             <enum name="radial" value="1" />
             <enum name="sweep" value="2" />
         </attr>
 
-        <attr name="gradient_useLevel" format="boolean" />
+        <attr name="bgs_gradient_useLevel" format="boolean" />
 
         <!--线性渐变角度，45的倍数-->
-        <attr name="bg_gradient_angle" format="integer" />
+        <attr name="bgs_gradient_angle" format="integer" />
 
-        <attr name="bg_gradient_centerX" format="float" />
-        <attr name="bg_gradient_centerY" format="float" />
-
-        <attr name="bg_gradient_startColor" format="color" />
-        <attr name="bg_gradient_centerColor" format="color" />
-        <attr name="bg_gradient_endColor" format="color" />
+        <attr name="bgs_gradient_centerX" format="float" />
+        <attr name="bgs_gradient_centerY" format="float" />
 
         <!--类型为radial时适用，渐变半径-->
-        <attr name="bg_gradient_gradient_radius" format="dimension" />
+        <attr name="bgs_gradient_gradient_radius" format="dimension" />
 
 
-        <attr name="bg_padding_left" format="dimension" />
-        <attr name="bg_padding_top" format="dimension" />
-        <attr name="bg_padding_right" format="dimension" />
-        <attr name="bg_padding_bottom" format="dimension" />
+        <attr name="bgs_padding_left" format="dimension" />
+        <attr name="bgs_padding_top" format="dimension" />
+        <attr name="bgs_padding_right" format="dimension" />
+        <attr name="bgs_padding_bottom" format="dimension" />
 
-        <attr name="size_width" format="dimension">
+        <attr name="bgs_size_width" format="dimension">
             <enum name="wrap_content" value="-2" />
             <enum name="match_parent" value="-1" />
         </attr>
 
-        <attr name="size_height" format="dimension">
+        <attr name="bgs_size_height" format="dimension">
             <enum name="wrap_content" value="-2" />
             <enum name="match_parent" value="-1" />
         </attr>
 
         <!--边线-->
-        <attr name="bg_stroke_width" format="dimension" />
-        <attr name="bg_stroke_color" format="color" />
-        <attr name="bg_stroke_dashWidth" format="dimension" />
-        <attr name="bg_stroke_dashGap" format="dimension" />
+        <attr name="bgs_stroke_width" format="dimension" />
+        <attr name="bgs_stroke_dashWidth" format="dimension" />
+        <attr name="bgs_stroke_dashGap" format="dimension" />
 
-        <!--以下是selector事件-->
-        <attr name="bg_sl_type">
-            <flag name="checked" value="1" />
-            <flag name="pressed" value="2" />
-            <flag name="selected" value="4" />
-        </attr>
-
-        <attr name="bg_sl_solid_color" format="color" />
-        <attr name="bg_sl_stroke_color" format="color" />
-        <attr name="bg_sl_gradient_startColor" format="color" />
-        <attr name="bg_sl_gradient_centerColor" format="color" />
-        <attr name="bg_sl_gradient_endColor" format="color" />
-
-
-        <attr name="ripple_enable" format="boolean" />
-        <attr name="ripple_color" format="color" />
     </declare-styleable>
 
 

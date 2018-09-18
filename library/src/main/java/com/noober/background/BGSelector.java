@@ -12,20 +12,21 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
+ * 基础selector的处理
  *
  * @Author hanbo
  * @Since 2018/9/17
  */
-public class BGSelector implements BackgroundFactory.IBGProcesser {
+public class BGSelector extends BackgroundFactory.IBGProcesser {
 
 
     private static final SparseArray<int[]> STATE_ARRAY = new SparseArray(8);
 
-    {
+    static {
         STATE_ARRAY.put(R.styleable.mc_bg_sl_bg_normal, new int[0]);
-        STATE_ARRAY.put(R.styleable.mc_bg_sl_bg_pressed, new int[]{com.android.internal.R.attr.state_pressed});
-        STATE_ARRAY.put(R.styleable.mc_bg_sl_bg_checked, new int[]{com.android.internal.R.attr.state_checked});
-        STATE_ARRAY.put(R.styleable.mc_bg_sl_bg_selected, new int[]{com.android.internal.R.attr.state_selected});
+        STATE_ARRAY.put(R.styleable.mc_bg_sl_bg_pressed, new int[]{android.R.attr.state_pressed});
+        STATE_ARRAY.put(R.styleable.mc_bg_sl_bg_checked, new int[]{android.R.attr.state_checked});
+        STATE_ARRAY.put(R.styleable.mc_bg_sl_bg_selected, new int[]{android.R.attr.state_selected});
     }
 
     @Override
@@ -46,9 +47,14 @@ public class BGSelector implements BackgroundFactory.IBGProcesser {
             StateListDrawable bg = new StateListDrawable();
             for (int i = 0; i < count; i++) {
                 int attr = a.getIndex(i);
+                if (attr == R.styleable.mc_bg_sl_bg_normal) {
+                    continue;
+                }
                 Drawable drawable = a.getDrawable(attr);
                 bg.addState(STATE_ARRAY.get(attr), drawable);
             }
+            bg.addState(new int[0], a.getDrawable(R.styleable.mc_bg_sl_bg_normal));  //默认背景放最后
+
             view.setBackgroundDrawable(bg);
             return true;
         } catch (Exception e) {
