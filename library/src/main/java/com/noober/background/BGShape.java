@@ -18,7 +18,7 @@ import org.xmlpull.v1.XmlPullParserException;
  * @Author hanbo
  * @Since 2018/9/14
  */
-public class BGShape extends BackgroundFactory.IBGProcesser {
+class BGShape extends BackgroundFactory.IBGProcesser {
 
 
     @Override

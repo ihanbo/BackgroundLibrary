@@ -17,7 +17,7 @@ import android.widget.TextView;
  * @Author hanbo
  * @Since 2018/9/17
  */
-public class BGSelector extends BackgroundFactory.IBGProcesser {
+class BGSelector extends BackgroundFactory.IBGProcesser {
 
 
     private static final SparseArray<int[]> STATE_ARRAY = new SparseArray(8);

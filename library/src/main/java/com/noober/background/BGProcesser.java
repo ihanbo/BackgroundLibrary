@@ -10,7 +10,7 @@ import android.view.View;
  * @Author hanbo
  * @Since 2018/9/18
  */
-public class BGProcesser extends BackgroundFactory.IBGProcesser {
+class BGProcesser extends BackgroundFactory.IBGProcesser {
 
     private BGSelector mBGSelector;
     private BGShape mBGShape;
