@@ -1,5 +1,6 @@
 package com.noober.background;
 
+import android.app.Notification;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -215,7 +216,7 @@ class BGShape extends BackgroundFactory.IBGProcesser {
             int type = a.getInt(R.styleable.mc_bg_shape_other_bgs_gradient_type, 0);
             drawable.setGradientType(type); //渐变类型
             if (type == GradientDrawable.RADIAL_GRADIENT) {    //光晕渐变必须设半径，默认100像素
-                drawable.setCornerRadius(a.getDimension(R.styleable.mc_bg_shape_other_bgs_gradient_gradient_radius, 100));
+                drawable.setGradientRadius(a.getDimension(R.styleable.mc_bg_shape_other_bgs_gradient_gradient_radius, 100));
             }
             drawable.setShape(a.getInt(R.styleable.mc_bg_shape_other_bgs_shape, GradientDrawable.RECTANGLE));    //shape形状,默认矩形
             _setShapeDrawable(drawable, strokeColor, a);
@@ -376,5 +377,13 @@ class BGShape extends BackgroundFactory.IBGProcesser {
         }
         return hasSet;
     }
+
+
+    interface Action{
+        void process(GradientDrawable drawable);
+    }
+
+
+
 
 }

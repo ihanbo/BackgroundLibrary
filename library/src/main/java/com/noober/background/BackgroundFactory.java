@@ -15,7 +15,8 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     private static final String[] sClassPrefixList = {
             "android.widget.",
             "android.webkit.",
-            "android.app."
+            "android.app.",
+            "android.view."
     };
 
     private static final ArrayList<IBGProcesser> PROCESSERS = new ArrayList<>(8);

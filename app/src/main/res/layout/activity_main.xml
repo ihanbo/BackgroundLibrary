@@ -14,48 +14,135 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:text="直接添加自定义属性，设置背景shape："
+        android:textSize="15sp" />
+
+
+    <TextView
+        android:id="@+id/bg_selector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:text="背景selector和文字颜色"
         android:textSize="15sp"
-        app:bg_checked="@color/colorAccent"
         app:bg_normal="#00ff00"
-        app:bg_pressed="@drawable/ic_launcher_foreground" />
+        app:bg_pressed="@drawable/mc_feed_default_0"
+        app:tx_color="@color/colorPrimary"
+        app:tx_color_pressed="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/bg_shape"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="简易shape"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        app:bgs_solid_color="#345566"
+        app:bgs_corners_radius="20dp"
+        app:bgs_solid_color_pressed="#542566" />
+
+    <TextView
+        android:id="@+id/bg_shape_gradient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:text="shape带渐变"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        app:bgs_gradient_angle="0"
+        app:bgs_gradient_startColor="@color/colorAccent"
+        app:bgs_gradient_endColor="@color/colorPrimaryDark"
+        app:bgs_gradient_startColor_pressed="#ff0000"
+        app:bgs_gradient_endColor_pressed="#00ff00" />
+
+    <TextView
+        android:id="@+id/stroke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="带边线"
+        android:textSize="20sp"
+        app:bgs_corners_radius_lt="20dp"
+        app:bgs_corners_radius_rb="20dp"
+        app:bgs_stroke_width="1dp"
+        app:bgs_solid_color="#E3B666"
+        app:bgs_stroke_color="#000000"/>
+
+    <TextView
+        android:id="@+id/stroke_dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="边线用虚线"
+        android:textColor="#8c6822"
+        android:textSize="20sp"
+        app:bgs_corners_radius="4dp"
+        app:bgs_solid_color="#E3B666"
+        app:bgs_stroke_color="#8c6822"
+        app:bgs_stroke_dashGap="5dp"
+        app:bgs_stroke_dashWidth="10dp"
+        app:bgs_stroke_width="2dp" />
+
+    <View
+        android:id="@+id/shape_bg"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:textColor="#8c6822"
+        android:textSize="20sp"
+        app:bgs_shape="oval"
+        app:bgs_size_width="60dp"
+        app:bgs_size_height="60dp"
+        app:bgs_gradient_type="radial"
+        app:bgs_gradient_gradient_radius="40dp"
+        app:bgs_gradient_startColor="@color/colorAccent"
+        app:bgs_gradient_centerColor="#00ff00"
+        app:bgs_gradient_endColor="@color/colorPrimary" />
 
     <TextView
         android:layout_width="130dp"
         android:layout_height="36dp"
+        android:clickable="true"
         android:gravity="center"
         android:text="TextView"
-        android:clickable="true"
-
-        app:bgs_solid_color_pressed="#000000"
-        app:bgs_stroke_color_pressed="#000000"
-        app:bgs_gradient_startColor_pressed="@color/colorPrimary"
-        app:bgs_gradient_centerColor_pressed="#000000"
-        app:bgs_gradient_endColor_pressed="#000000"
-
-
-        app:bgs_solid_color_cs="#000000"
-        app:bgs_stroke_color_cs="#000000"
-        app:bgs_gradient_startColor_cs="@color/colorPrimary"
-        app:bgs_gradient_centerColor_cs="#000000"
-        app:bgs_gradient_endColor_cs="#000000"
-
-
-
 
         android:textColor="#8c6822"
         android:textSize="20sp"
         app:bgs_corners_radius="4dp"
         app:bgs_corners_radius_lb="15dp"
         app:bgs_corners_radius_lt="5dp"
+
+
         app:bgs_corners_radius_rb="15dp"
         app:bgs_corners_radius_rt="5dp"
         app:bgs_gradient_centerColor="#00ff00"
+        app:bgs_gradient_centerColor_cs="#000000"
+        app:bgs_gradient_centerColor_pressed="#000000"
+
+
         app:bgs_gradient_endColor="@color/colorPrimaryDark"
+        app:bgs_gradient_endColor_cs="#000000"
+        app:bgs_gradient_endColor_pressed="#000000"
         app:bgs_gradient_startColor="@color/colorAccent"
+        app:bgs_gradient_startColor_cs="@color/colorPrimary"
+        app:bgs_gradient_startColor_pressed="@color/colorPrimary"
         app:bgs_gradient_type="linear"
         app:bgs_shape="rectangle"
         app:bgs_solid_color="#E3B666"
+        app:bgs_solid_color_cs="#000000"
+        app:bgs_solid_color_pressed="#000000"
         app:bgs_stroke_color="#8c6822"
+        app:bgs_stroke_color_cs="#000000"
+        app:bgs_stroke_color_pressed="#000000"
         app:bgs_stroke_dashGap="4dp"
         app:bgs_stroke_dashWidth="4dp"
         app:bgs_stroke_width="2dp" />
@@ -88,7 +175,8 @@
         android:text="确认"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        app:bgs_corners_radius="20dp"
+        app:bgs_corners_radius_lt="20dp"
+        app:bgs_corners_radius_rb="20dp"
         app:bgs_gradient_angle="0"
         app:bgs_gradient_centerColor="#CD4F39"
         app:bgs_gradient_endColor="#CD2626"
@@ -97,21 +185,8 @@
         app:bgs_stroke_color_pressed="#00FF00"
         app:bgs_stroke_width="5dp" />
 
-    <TextView
-        android:layout_width="130dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:text="TextView"
-        android:textColor="#8c6822"
-        android:textSize="20sp"
-        app:bgs_corners_radius="4dp"
-        app:bgs_gradient_useLevel="true"
-        app:bgs_solid_color="#E3B666"
-        app:bgs_stroke_color="#8c6822"
-        app:bgs_stroke_dashGap="5dp"
-        app:bgs_stroke_dashWidth="10dp"
-        app:bgs_stroke_width="2dp" />
+
+
 
     <Button
         android:layout_width="300dp"
@@ -125,20 +200,6 @@
         app:bgs_corners_radius="20dp"
         app:bgs_solid_color="#7CFC00"
         app:bgs_solid_color_pressed="#7CCD7C" />
-
-    <View
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:textColor="#8c6822"
-        android:textSize="20sp"
-        app:bgs_shape="rectangle"
-        app:bgs_solid_color="#E3B666"
-        app:bgs_stroke_color="#8c6822"
-        app:bgs_stroke_dashGap="5dp"
-        app:bgs_stroke_dashWidth="10dp"
-        app:bgs_stroke_width="2dp" />
 
 
 </LinearLayout>
