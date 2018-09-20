@@ -12,13 +12,6 @@ import java.util.ArrayList;
 public class BackgroundFactory implements LayoutInflater.Factory2 {
 
 
-    private static final String[] sClassPrefixList = {
-            "android.widget.",
-            "android.webkit.",
-            "android.app.",
-            "android.view."
-    };
-
     private static final ArrayList<IBGProcesser> PROCESSERS = new ArrayList<>(8);
 
     static {
@@ -29,10 +22,10 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     //AppCompatActivity用的来创建view
     private LayoutInflater.Factory mViewCreateFactory;
     //用于创建view
-    private LayoutInflater mInflater;
+    private ViewCreater mViewCreater;
 
     public BackgroundFactory(LayoutInflater inflater) {
-        mInflater = inflater;
+        mViewCreater = new ViewCreater(inflater);
     }
 
     public void setInterceptFactory(LayoutInflater.Factory2 factory) {
@@ -52,7 +45,7 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
         }
 
         if (view == null) {
-            view = createView(mInflater, name, attrs);
+            view = mViewCreater.createView(parent, name, attrs);
         }
 
         if (view == null) {
@@ -67,21 +60,6 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
     }
 
 
-    private View createView(LayoutInflater inflater, String name, AttributeSet attrs) {
-        for (String prefix : sClassPrefixList) {
-            try {
-                View view = inflater.createView(name, prefix, attrs);
-                if (view != null) {
-                    return view;
-                }
-            } catch (Exception e) {
-                // In this case we want to let the base class take a crack
-                // at it.
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
 
 
     public static abstract class IBGProcesser {
