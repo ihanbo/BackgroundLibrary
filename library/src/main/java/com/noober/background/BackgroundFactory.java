@@ -74,17 +74,19 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 if (view != null) {
                     return view;
                 }
-            } catch (ClassNotFoundException e) {
+            } catch (Exception e) {
                 // In this case we want to let the base class take a crack
                 // at it.
+                e.printStackTrace();
             }
         }
         return null;
     }
 
 
-    public static abstract class  IBGProcesser {
+    public static abstract class IBGProcesser {
         abstract boolean process(View view, Context context, AttributeSet attrs);
+
         public void safeRecycle(TypedArray a) {
             if (a == null) {
                 return;
@@ -95,9 +97,16 @@ public class BackgroundFactory implements LayoutInflater.Factory2 {
                 e.printStackTrace();
             }
         }
+
+        public void safeRecycles(TypedArray... a) {
+            if (a == null || a.length == 0) {
+                return;
+            }
+            for (int i = 0, len = a.length; i < len; i++) {
+                safeRecycle(a[i]);
+            }
+        }
     }
-
-
 
 
 }
