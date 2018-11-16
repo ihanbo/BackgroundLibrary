@@ -30,12 +30,12 @@ class BGShape extends BackgroundFactory.IBGProcesser {
             return false;
         }
 
-        GDBuilder cg = null;
+        DrawableBuilder cg = null;
         if (comm.getIndexCount() != 0) {
-            cg = GDBuilder.cloneOrNew(null);
+            cg = DrawableBuilder.cloneOrNew(null);
             for (int i = 0; i < comm.getIndexCount(); i++) {
                 int attr = comm.getIndex(i);
-                GDBuilder.Action action = AttrHelper.COMM.get(attr);
+                DrawableBuilder.Action action = AttrHelper.COMM.get(attr);
                 try {
                     action.process(comm, attr, cg);
                 } catch (Exception e) {
@@ -45,16 +45,16 @@ class BGShape extends BackgroundFactory.IBGProcesser {
         }
 
 
-        Drawable normal = getDrawable(AttrHelper.NORMAL, a, GDBuilder.cloneOrNew(cg));
+        Drawable normal = getDrawable(AttrHelper.NORMAL, a, DrawableBuilder.cloneOrNew(cg));
         if (normal == null) {
             safeRecycles(a, comm);
             return false;
         }
 
         TypedArray pressedTa = context.obtainStyledAttributes(attrs, R.styleable.mc_bg_shape_pressed);
-        Drawable pressed = getDrawable(AttrHelper.PRESSED, pressedTa, GDBuilder.cloneOrNew(cg));
+        Drawable pressed = getDrawable(AttrHelper.PRESSED, pressedTa, DrawableBuilder.cloneOrNew(cg));
         TypedArray cta = context.obtainStyledAttributes(attrs, R.styleable.mc_bg_shape_selected_or_checked);
-        Drawable checkOrSelect = getDrawable(AttrHelper.CHECK_SELECT, cta, GDBuilder.cloneOrNew(cg));
+        Drawable checkOrSelect = getDrawable(AttrHelper.CHECK_SELECT, cta, DrawableBuilder.cloneOrNew(cg));
 
         if (pressed == null && checkOrSelect == null) {
             view.setBackgroundDrawable(normal);
@@ -79,14 +79,14 @@ class BGShape extends BackgroundFactory.IBGProcesser {
     }
 
 
-    private GradientDrawable getDrawable(SparseArray<GDBuilder.Action> ss, TypedArray main, GDBuilder gb) {
+    private GradientDrawable getDrawable(SparseArray<DrawableBuilder.Action> ss, TypedArray main, DrawableBuilder gb) {
         if (main.getIndexCount() == 0) {
             return null;
         }
 
         for (int i = 0; i < main.getIndexCount(); i++) {
             int attr = main.getIndex(i);
-            GDBuilder.Action action = ss.get(attr);
+            DrawableBuilder.Action action = ss.get(attr);
             if (action != null) {
                 try {
                     action.process(main, attr, gb);

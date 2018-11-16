@@ -2,32 +2,32 @@ package com.noober.background;
 
 import android.util.SparseArray;
 
-import static com.noober.background.GDBuilder.CORNER_RADIUS_ALL;
-import static com.noober.background.GDBuilder.CORNER_RADIUS_LB;
-import static com.noober.background.GDBuilder.CORNER_RADIUS_LT;
-import static com.noober.background.GDBuilder.CORNER_RADIUS_RB;
-import static com.noober.background.GDBuilder.CORNER_RADIUS_RT;
-import static com.noober.background.GDBuilder.DASH_GAP;
-import static com.noober.background.GDBuilder.DASH_WIDTH;
-import static com.noober.background.GDBuilder.GRADIENT_ANGLE;
-import static com.noober.background.GDBuilder.GRADIENT_CENTER_COLOR;
-import static com.noober.background.GDBuilder.GRADIENT_CENTER_X;
-import static com.noober.background.GDBuilder.GRADIENT_CENTER_Y;
-import static com.noober.background.GDBuilder.GRADIENT_END_COLOR;
-import static com.noober.background.GDBuilder.GRADIENT_START_COLOR;
-import static com.noober.background.GDBuilder.GRADIENT_TYPE;
-import static com.noober.background.GDBuilder.PADDING_BOTTOM;
-import static com.noober.background.GDBuilder.PADDING_LEFT;
-import static com.noober.background.GDBuilder.PADDING_RIGHT;
-import static com.noober.background.GDBuilder.PADDING_TOP;
-import static com.noober.background.GDBuilder.RADIAL_GRADIENT_RADIUS;
-import static com.noober.background.GDBuilder.SHAPE_TYPE;
-import static com.noober.background.GDBuilder.SIZE_HEIGHT;
-import static com.noober.background.GDBuilder.SIZE_WIDTH;
-import static com.noober.background.GDBuilder.SOLID_COLOR;
-import static com.noober.background.GDBuilder.STROKE_COLOR;
-import static com.noober.background.GDBuilder.STROKE_WIDTH;
-import static com.noober.background.GDBuilder.USE_LEVEL;
+import static com.noober.background.DrawableBuilder.CORNER_RADIUS_ALL;
+import static com.noober.background.DrawableBuilder.CORNER_RADIUS_LB;
+import static com.noober.background.DrawableBuilder.CORNER_RADIUS_LT;
+import static com.noober.background.DrawableBuilder.CORNER_RADIUS_RB;
+import static com.noober.background.DrawableBuilder.CORNER_RADIUS_RT;
+import static com.noober.background.DrawableBuilder.DASH_GAP;
+import static com.noober.background.DrawableBuilder.DASH_WIDTH;
+import static com.noober.background.DrawableBuilder.GRADIENT_ANGLE;
+import static com.noober.background.DrawableBuilder.GRADIENT_CENTER_COLOR;
+import static com.noober.background.DrawableBuilder.GRADIENT_CENTER_X;
+import static com.noober.background.DrawableBuilder.GRADIENT_CENTER_Y;
+import static com.noober.background.DrawableBuilder.GRADIENT_END_COLOR;
+import static com.noober.background.DrawableBuilder.GRADIENT_START_COLOR;
+import static com.noober.background.DrawableBuilder.GRADIENT_TYPE;
+import static com.noober.background.DrawableBuilder.PADDING_BOTTOM;
+import static com.noober.background.DrawableBuilder.PADDING_LEFT;
+import static com.noober.background.DrawableBuilder.PADDING_RIGHT;
+import static com.noober.background.DrawableBuilder.PADDING_TOP;
+import static com.noober.background.DrawableBuilder.RADIAL_GRADIENT_RADIUS;
+import static com.noober.background.DrawableBuilder.SHAPE_TYPE;
+import static com.noober.background.DrawableBuilder.SIZE_HEIGHT;
+import static com.noober.background.DrawableBuilder.SIZE_WIDTH;
+import static com.noober.background.DrawableBuilder.SOLID_COLOR;
+import static com.noober.background.DrawableBuilder.STROKE_COLOR;
+import static com.noober.background.DrawableBuilder.STROKE_WIDTH;
+import static com.noober.background.DrawableBuilder.USE_LEVEL;
 
 /**
  * shapedrawable的属性
@@ -37,10 +37,10 @@ import static com.noober.background.GDBuilder.USE_LEVEL;
  */
 class AttrHelper {
 
-    final static SparseArray<GDBuilder.Action> COMM = new SparseArray<>(32);
-    final static SparseArray<GDBuilder.Action> NORMAL = new SparseArray<>(16);
-    final static SparseArray<GDBuilder.Action> PRESSED = new SparseArray<>(16);
-    final static SparseArray<GDBuilder.Action> CHECK_SELECT = new SparseArray<>(16);
+    final static SparseArray<DrawableBuilder.Action> COMM = new SparseArray<>(32);
+    final static SparseArray<DrawableBuilder.Action> NORMAL = new SparseArray<>(16);
+    final static SparseArray<DrawableBuilder.Action> PRESSED = new SparseArray<>(16);
+    final static SparseArray<DrawableBuilder.Action> CHECK_SELECT = new SparseArray<>(16);
 
 
     static {
@@ -69,7 +69,7 @@ class AttrHelper {
     }
 
 
-    private static void addComm(SparseArray<GDBuilder.Action> ss) {
+    private static void addComm(SparseArray<DrawableBuilder.Action> ss) {
         ss.put(R.styleable.mc_bg_shape_other_bgs_shape, SHAPE_TYPE);
         ss.put(R.styleable.mc_bg_shape_other_bgs_corners_radius, CORNER_RADIUS_ALL);
         ss.put(R.styleable.mc_bg_shape_other_bgs_corners_radius_lb, CORNER_RADIUS_LB);

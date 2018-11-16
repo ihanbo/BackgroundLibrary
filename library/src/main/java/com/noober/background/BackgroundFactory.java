@@ -3,63 +3,32 @@ package com.noober.background;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 
 import java.util.ArrayList;
 
 
-public class BackgroundFactory implements LayoutInflater.Factory2 {
+public class BackgroundFactory implements PPInject.Factory3 {
 
 
     private static final ArrayList<IBGProcesser> PROCESSERS = new ArrayList<>(8);
 
     static {
-        PROCESSERS.add(new TXColorProcesser());
-        PROCESSERS.add(new BGProcesser());
+        PROCESSERS.add(new TextViewColorProcesser());
+        PROCESSERS.add(new BackgroundProcesser());
     }
 
-    //AppCompatActivity用的来创建view
-    private LayoutInflater.Factory mViewCreateFactory;
-    //用于创建view
-    private ViewCreater mViewCreater;
-
-    public BackgroundFactory(LayoutInflater inflater) {
-        mViewCreater = new ViewCreater(inflater);
-    }
-
-    public void setInterceptFactory(LayoutInflater.Factory2 factory) {
-        mViewCreateFactory = factory;
-    }
 
     @Override
-    public View onCreateView(String name, Context context, AttributeSet attrs) {
-        return onCreateView(null, name, context, attrs);
-    }
-
-    @Override
-    public View onCreateView(View parent, String name, Context context, AttributeSet attrs) {
-        View view = null;
-        if (mViewCreateFactory != null) {
-            view = mViewCreateFactory.onCreateView(name, context, attrs);
-        }
-
-        if (view == null) {
-            view = mViewCreater.createView(parent, name, attrs);
-        }
-
-        if (view == null) {
-            return null;
+    public void onDecorateView(View createdView, String name, Context context, AttributeSet attrs, View parent) {
+        if (createdView == null) {
+            return;
         }
 
         for (int i = 0, size = PROCESSERS.size(); i < size; i++) {
-            PROCESSERS.get(i).process(view, context, attrs);
+            PROCESSERS.get(i).process(createdView, context, attrs);
         }
-
-        return view;
     }
-
-
 
 
     public static abstract class IBGProcesser {

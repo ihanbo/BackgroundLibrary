@@ -1,11 +1,10 @@
 package com.noober.background;
 
-import android.annotation.ColorInt;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.support.annotation.ColorInt;
 import android.view.ViewGroup;
 
 import java.lang.reflect.Field;
@@ -16,7 +15,7 @@ import java.lang.reflect.Field;
  * @Author hanbo
  * @Since 2018/9/19
  */
-class GDBuilder implements Cloneable {
+class DrawableBuilder implements Cloneable {
 
 
     private static final int STROKE_WIDTH_DEFAULT = 3;
@@ -25,7 +24,7 @@ class GDBuilder implements Cloneable {
 
     static final Action SOLID_COLOR = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             int color = a.getColor(attr, 0);
             if (color != 0) {
                 builder.setSolidColor(color);
@@ -35,7 +34,7 @@ class GDBuilder implements Cloneable {
 
     static final Action GRADIENT_START_COLOR = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             int color = a.getColor(attr, 0);
             if (color != 0) {
                 builder.setGradientStartColor(color);
@@ -45,7 +44,7 @@ class GDBuilder implements Cloneable {
 
     static final Action GRADIENT_CENTER_COLOR = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             int color = a.getColor(attr, 0);
             if (color != 0) {
                 builder.setGradientCenterColor(color);
@@ -55,7 +54,7 @@ class GDBuilder implements Cloneable {
 
     static final Action GRADIENT_END_COLOR = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             int color = a.getColor(attr, 0);
             if (color != 0) {
                 builder.setGradientEndColor(color);
@@ -65,7 +64,7 @@ class GDBuilder implements Cloneable {
 
     static final Action SHAPE_TYPE = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             int shape = a.getInt(attr, GradientDrawable.RECTANGLE);
             builder.setShape(shape);
         }
@@ -73,7 +72,7 @@ class GDBuilder implements Cloneable {
 
     static final Action GRADIENT_TYPE = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             int type = a.getInt(attr, GradientDrawable.LINEAR_GRADIENT);
             builder.setGradientType(type);
         }
@@ -81,7 +80,7 @@ class GDBuilder implements Cloneable {
 
     static final Action STROKE_COLOR = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             int color = a.getColor(attr, 0);
             if (color != 0) {
                 builder.setStrokeColor(color);
@@ -91,7 +90,7 @@ class GDBuilder implements Cloneable {
 
     static final Action RADIAL_GRADIENT_RADIUS = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float radius = a.getDimension(attr, RADIAL_RADIUS_DEFAULT);
             builder.setGradientRadius(radius);
         }
@@ -99,7 +98,7 @@ class GDBuilder implements Cloneable {
 
     static final Action STROKE_WIDTH = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float width = a.getDimension(attr, STROKE_WIDTH_DEFAULT);
             builder.setStrokeWidth(width);
         }
@@ -108,7 +107,7 @@ class GDBuilder implements Cloneable {
 
     static final Action CORNER_RADIUS_ALL = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float width = a.getDimension(attr, 0);
             builder.setAllCornerRadius(width);
         }
@@ -116,7 +115,7 @@ class GDBuilder implements Cloneable {
 
     static final Action CORNER_RADIUS_LT = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setCornerRadiusLeftTop(dimen);
         }
@@ -124,7 +123,7 @@ class GDBuilder implements Cloneable {
 
     static final Action CORNER_RADIUS_RT = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setCornerRadiusRightTop(dimen);
 
@@ -133,7 +132,7 @@ class GDBuilder implements Cloneable {
 
     static final Action CORNER_RADIUS_LB = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setCornerRadiusLeftBottom(dimen);
         }
@@ -141,7 +140,7 @@ class GDBuilder implements Cloneable {
 
     static final Action CORNER_RADIUS_RB = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setCornerRadiusRightBottom(dimen);
         }
@@ -149,14 +148,14 @@ class GDBuilder implements Cloneable {
 
     static final Action USE_LEVEL = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             builder.setUseLevel(a.getBoolean(attr, false));
         }
     };
 
     static final Action PADDING_LEFT = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setPaddingLeft(dimen);
         }
@@ -164,7 +163,7 @@ class GDBuilder implements Cloneable {
 
     static final Action PADDING_TOP = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setPaddingTop(dimen);
         }
@@ -172,7 +171,7 @@ class GDBuilder implements Cloneable {
 
     static final Action PADDING_RIGHT = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setPaddingRight(dimen);
         }
@@ -180,7 +179,7 @@ class GDBuilder implements Cloneable {
 
     static final Action PADDING_BOTTOM = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setPaddingBottom(dimen);
         }
@@ -188,7 +187,7 @@ class GDBuilder implements Cloneable {
 
     static final Action SIZE_WIDTH = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, ViewGroup.LayoutParams.MATCH_PARENT);
             builder.setSizeWidth(dimen);
         }
@@ -196,7 +195,7 @@ class GDBuilder implements Cloneable {
 
     static final Action SIZE_HEIGHT = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, ViewGroup.LayoutParams.MATCH_PARENT);
             builder.setSizeHeight(dimen);
         }
@@ -204,7 +203,7 @@ class GDBuilder implements Cloneable {
 
     static final Action DASH_WIDTH = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setDashWidth(dimen);
         }
@@ -212,7 +211,7 @@ class GDBuilder implements Cloneable {
 
     static final Action DASH_GAP = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getDimension(attr, 0);
             builder.setDashGap(dimen);
         }
@@ -220,7 +219,7 @@ class GDBuilder implements Cloneable {
 
     static final Action GRADIENT_CENTER_X = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getFloat(attr, 0.5f);
             builder.setGradientCenterX(dimen);
         }
@@ -228,7 +227,7 @@ class GDBuilder implements Cloneable {
 
     static final Action GRADIENT_CENTER_Y = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             float dimen = a.getFloat(attr, 0.5f);
             builder.setGradientCenterY(dimen);
         }
@@ -237,7 +236,7 @@ class GDBuilder implements Cloneable {
 
     static final Action GRADIENT_ANGLE = new Action() {
         @Override
-        public void process(TypedArray a, int attr, GDBuilder builder) throws Exception {
+        public void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception {
             int angle = a.getInt(attr, 0);
             builder.setGradientAngle(angle);
         }
@@ -283,29 +282,29 @@ class GDBuilder implements Cloneable {
     private float mSizeHeight;
 
     @Override
-    public GDBuilder clone() throws CloneNotSupportedException {
-        GDBuilder newOne = (GDBuilder) super.clone();
+    public DrawableBuilder clone() throws CloneNotSupportedException {
+        DrawableBuilder newOne = (DrawableBuilder) super.clone();
         newOne.mPadding = new RectF(mPadding);
         newOne.cornerRadius = cornerRadius.clone();
         return newOne;
     }
 
-    public static GDBuilder cloneOrNew(GDBuilder gdBuilder) {
-        if (gdBuilder == null) {
-            return new GDBuilder();
+    public static DrawableBuilder cloneOrNew(DrawableBuilder drawableBuilder) {
+        if (drawableBuilder == null) {
+            return new DrawableBuilder();
         }
 
-        GDBuilder newOne;
+        DrawableBuilder newOne;
         try {
-            newOne = gdBuilder.clone();
+            newOne = drawableBuilder.clone();
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
-            newOne = new GDBuilder();
+            newOne = new DrawableBuilder();
         }
         return newOne;
     }
 
-    private GDBuilder() {
+    private DrawableBuilder() {
     }
 
     private void setStrokeColor(@ColorInt int strokeColor) {
@@ -535,7 +534,7 @@ class GDBuilder implements Cloneable {
 
 
     interface Action {
-        void process(TypedArray a, int attr, GDBuilder builder) throws Exception;
+        void process(TypedArray a, int attr, DrawableBuilder builder) throws Exception;
     }
 
 }

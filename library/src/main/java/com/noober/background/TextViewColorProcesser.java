@@ -17,7 +17,7 @@ import android.widget.TextView;
  * @Author hanbo
  * @Since 2018/9/17
  */
-class TXColorProcesser extends BackgroundFactory.IBGProcesser {
+class TextViewColorProcesser extends BackgroundFactory.IBGProcesser {
 
 
     public static final SparseArray<int[]> STATE_ARRAY = new SparseArray(8);
